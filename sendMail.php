@@ -11,7 +11,14 @@ if(empty($userName) || empty($userEmail) || empty($userMessage)){
 }else{
     $to = "dgusaiwal537@gmail.com";
     $subject = "text from message";
-    $header = "From : $userName";
+    $header = [
+        "From : $userName",
+        "User Email : $userEmail",
+    ];
+
+    // convert array to string
+    $header = implode("\r\n",$header);
+
     mail($to,$subject,$userMessage,$header);
    echo "your mail has been sent successfully";
 };
